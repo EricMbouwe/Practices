@@ -1,0 +1,109 @@
+*, 
+*::after, 
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px;
+}
+
+.container {
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: brown;
+}
+
+h1::before {
+  content: 'content before';
+  display: inline-block;
+  height: 100%;
+  background-color: purple;
+}
+
+a[href$="pdf"]::after {
+  font-family: 'Font Awesome 5 free';
+  content: 'f1c1';
+}
+
+a[href^="http"]::after {
+  font-family: 'Font Awesome 5 free';
+  content: url(./address-book-regular.svg);
+  font-weight: 900;
+  font-size: .1em;
+  width: 10px;
+  height: 10px;
+}
+
+.card {
+  position: relative;
+  margin: 20px;
+  background-color: rgb(72, 74, 78);
+}
+
+.card::before,
+.card::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  transition: transform 300ms ease-in-out;
+}
+
+.card::before {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  transform: scale(0,1);
+}
+
+.card::after {
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  transform: scale(1,0);
+}
+
+.card:hover:before {
+  transform: scale(1.1, 1);
+}
+
+.card:hover:after {
+  transform: scale(1, 1.1); 
+}
+
+.card:hover .card__text {
+  opacity: 1;
+}
+
+.card:hover .card__img {
+  opacity: .4;
+}
+
+.card__img {
+  display: block;
+  max-width: 100%;
+  transition: opacity ease-out 300ms;
+}
+
+.card__text {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  color: white;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  width: max-content;
+}

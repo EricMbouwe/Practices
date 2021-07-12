@@ -1,0 +1,28 @@
+body {
+  padding: 50px;
+}
+
+.trigger {
+  width: 200px;
+  height: 200px;
+  border: 20px solid #999;
+  background-color: #ddd;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  display: inline-block;
+  transition: transform 300ms cubic-bezier(0, 1.44, 0.54, 1.56);
+  pointer-events: none; /* remove the hover effect on the box*/
+}
+
+/* when the trigger(the parent) is hovered, apply this style to the box */
+.trigger:hover .box{
+  transform: translate(200px, 150px) rotate(20deg);
+}
+
+/* when the trigger(the parent) has the class 'clicked', apply this style to the box */
+.trigger.clicked .box{
+  transform: translate(200px, 150px) rotate(20deg);
+}

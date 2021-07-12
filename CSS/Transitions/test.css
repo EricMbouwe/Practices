@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+}
+.intro {
+  border: 10px solid black;
+  width: 200px;
+  height: 200px;
+  background-color: rosybrown;
+  position: relative;
+}
+.title {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: purple;
+  top: 50px;
+  left: 50px;
+  /* transition: transform 1s cubic-bezier(0, 1.44, 0.54, 1.56), opacity 1s linear, background-color 1s linear;  */
+  transition: all 1s cubic-bezier(0, 1.44, 0.54, 1.56);
+  pointer-events: none;
+}
+
+.intro:hover .title {
+  transform: translate(250px, 250px) rotate(50deg);
+  opacity: 0.5;
+  background-color: blue;
+}
