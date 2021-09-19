@@ -1,13 +1,14 @@
-require "selenium-webdriver"
+require 'selenium-webdriver'
+require 'colorize'
 
 driver = Selenium::WebDriver.for :chrome
-driver.navigate.to "https://dashboard.microverse.org/review_requests"
+driver.navigate.to 'https://dashboard.microverse.org/review_requests'
 # driver.manage.window.maximize
 
 EMAIL =  ARGV[0] || 'ericmbouwe@yahoo.fr'
 PASSWORD =  ARGV[1] || 'Naruto00'
 
-REFRESH_TIMER = 5
+REFRESH_TIMER = 10
 LOGGING_TIMER = 5
 
 driver.find_element(:name, 'email').send_keys(EMAIL)
@@ -31,17 +32,17 @@ loop do
 
     if i%REFRESH_TIMER == 0
         driver.navigate.refresh
-        puts '...Fast Page Refresh...'
+        puts '...Fast Page Refresh...'.colorize( :background => :blue)
     end
 
     if !claim_btns.empty?
         if claim_btns[0].displayed?
-            puts 'Claimed Code Review!!!'
+            puts 'Claimed Code Review!!!'.colorize(:background => :green)
             claim_btns[0].click
             break
         end
     else
-        puts 'No Review Found At This Moment...'
+        puts 'No Review Found At This Moment...'.colorize(:yellow)
     end
 
     i += 1
