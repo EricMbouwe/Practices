@@ -8,7 +8,7 @@ driver.navigate.to 'https://dashboard.microverse.org/review_requests'
 EMAIL =  ARGV[0] || 'ericmbouwe@yahoo.fr'
 PASSWORD =  ARGV[1] || 'Naruto00'
 
-REFRESH_TIMER = 1000
+REFRESH_TIMER = 2000 #-> 17 seconds
 LOGGING_TIMER = 5
 
 sleep(1)
@@ -31,6 +31,7 @@ loop do
     claim_btns = driver.find_elements(:name, 'claim')
     # p claim_btns
 
+    # sleep(1)
     puts "scrapping since #{i} seconds..."
 
     if i%REFRESH_TIMER == 0
