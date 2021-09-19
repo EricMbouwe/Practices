@@ -7,10 +7,15 @@ driver.navigate.to "https://dashboard.microverse.org/review_requests"
 EMAIL =  ARGV[0] || 'ericmbouwe@yahoo.fr'
 PASSWORD =  ARGV[1] || 'Naruto00'
 
+REFRESH_TIMER = 5
+LOGGING_TIMER = 5
+
 driver.find_element(:name, 'email').send_keys(EMAIL)
 driver.find_element(:name, 'password').send_keys(PASSWORD)
 
 driver.find_element(:name, 'submit').click
+
+sleep(LOGGING_TIMER)
 
 element = driver.find_element(:link_text, 'Review Requests 2.0')
 element.click
@@ -24,9 +29,9 @@ loop do
     sleep(1)
     puts "scrapping since #{i} seconds..."
 
-    if i%5 == 0
+    if i%REFRESH_TIMER == 0
         driver.navigate.refresh
-        p 'Fast Page Refresh...'
+        puts '...Fast Page Refresh...'
     end
 
     if !claim_btns.empty?
