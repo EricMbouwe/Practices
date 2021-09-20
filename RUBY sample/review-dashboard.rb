@@ -26,7 +26,7 @@ element.click
 i = 1
 loop do
 
-    claim_btns = driver.find_elements(:name, 'claim')
+    claim_btns = driver.find_elements(:link_text, 'Claim')
     # p claim_btns
 
     sleep(1)
